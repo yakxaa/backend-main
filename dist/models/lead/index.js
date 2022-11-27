@@ -19,11 +19,14 @@ exports.LeadSchema = new mongoose_1.Schema({
         type: String,
         required: true,
     },
-    type_of_organization: {
+    // type_of_organization: {
+    //   type: String,
+    //   required: true,
+    // },
+    organization_name: {
         type: String,
         required: true,
     },
-    organization_name: { type: String, required: true },
     message: String,
     video_link: String,
 }, {
