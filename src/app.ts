@@ -11,10 +11,12 @@ import morgan from "morgan";
 const app = express();
 
 morgan.token("email", function (req: Request, res: Response) {
-  return req.body.email;
+  if (req.body) if (req.body.email) return req.body.email;
+  return "no-email";
 });
 morgan.token("phone", function (req: Request, res: Response) {
-  return req.body.phone;
+  if (req.body) if (req.body.phone) return req.body.phone;
+  return "no-phone";
 });
 
 const skipSuccess = (req: Request, res: Response) => res.statusCode < 400;

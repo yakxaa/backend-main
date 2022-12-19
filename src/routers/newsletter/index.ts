@@ -30,7 +30,7 @@ const addSubscriber = async (req: Request, res: Response) => {
   const response = await client.lists.addListMember(LIST_ID, member);
   const add = new NewsletterModel(req.body);
   await add.save();
-  return res.status(200).send(response);
+  return res.status(201).send(response);
 };
 
 type statusEnum =

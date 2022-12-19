@@ -40,7 +40,7 @@ const addSubscriber = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     const response = yield mailchimp_marketing_1.default.lists.addListMember(LIST_ID, member);
     const add = new newsletter_1.NewsletterModel(req.body);
     yield add.save();
-    return res.status(200).send(response);
+    return res.status(201).send(response);
 });
 router.post("/user", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     (0, tryCatchHandler_1.default)(addSubscriber, req, res);

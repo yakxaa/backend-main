@@ -14,10 +14,16 @@ const fs_1 = __importDefault(require("fs"));
 const morgan_1 = __importDefault(require("morgan"));
 const app = (0, express_1.default)();
 morgan_1.default.token("email", function (req, res) {
-    return req.body.email;
+    if (req.body)
+        if (req.body.email)
+            return req.body.email;
+    return "no-email";
 });
 morgan_1.default.token("phone", function (req, res) {
-    return req.body.phone;
+    if (req.body)
+        if (req.body.phone)
+            return req.body.phone;
+    return "no-phone";
 });
 const skipSuccess = (req, res) => res.statusCode < 400;
 app.use((0, morgan_1.default)(":method :url :status :http-version :response-time :email :phone", {
