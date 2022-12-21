@@ -3,8 +3,9 @@ import getConfigVars from "../config";
 import models from "../models";
 
 mongoose
-  .connect(getConfigVars(process.env))
+  .connect(getConfigVars()!.mongoURL)
   .then(async () => {
+    // console.log(getConfigVars());
     await Promise.all(
       models.map(async (model: typeof mongoose.Model) => {
         await model.init();

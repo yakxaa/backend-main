@@ -30,10 +30,6 @@ export const LeadSchema = new Schema<ILeadDocument>(
       type: String,
       required: true,
     },
-    // type_of_organization: {
-    //   type: String,
-    //   required: true,
-    // },
     organization_name: {
       type: String,
       required: true,

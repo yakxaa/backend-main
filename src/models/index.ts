@@ -1,3 +1,4 @@
 import { LeadModel } from "./lead";
 import { NewsletterModel } from "./newsletter";
-export default [LeadModel, NewsletterModel];
+import { UserModel } from "./user";
+export default [LeadModel, NewsletterModel, UserModel];
