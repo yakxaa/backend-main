@@ -3,6 +3,10 @@
 //   return `mongodb+srv://${process.env.MONGO_DB_USERNAME}:${process.env.MONGO_DB_PASSWORD}@cluster0.ku6ozsp.mongodb.net/${process.env.ENV}?retryWrites=true&w=majority`;
 // };
 
+const MONGO_URL_PROD =
+  "mongodb+srv://yakxa:N0n4eDU240YyANZb@cluster0.ku6ozsp.mongodb.net/main?retryWrites=true&w=majority";
+const MONGO_URL_DEV =
+  "mongodb+srv://yakxa:MawAhdPyu59cNoEW@yakxawebsitedev.ydnme0k.mongodb.net/?retryWrites=true&w=majority";
 const FIREBASE_DEV = {
   type: "service_account",
   project_id: "yakxa-dev-ef173",
@@ -35,18 +39,17 @@ const FIREBASE_PROD = {
 };
 
 const getConfigVars = () => {
-  let mongoURL, firebaseSecrets;
-  const { MONGO_URL_PROD, MONGO_URL_DEV, ENV } = process.env;
-  if (ENV == "dev") {
+  let mongoURL: typeof MONGO_URL_DEV, firebaseSecrets: typeof FIREBASE_DEV;
+  const { ENV } = process.env;
+  if (ENV == "production") {
     return {
-      mongoURL: MONGO_URL_DEV!,
-      firebaseSecrets: FIREBASE_DEV,
-    };
-  } else if (ENV == "production") {
-    return {
-      mongoURL: MONGO_URL_PROD!,
+      mongoURL: MONGO_URL_PROD,
       firebaseSecrets: FIREBASE_PROD,
     };
   }
+  return {
+    mongoURL: MONGO_URL_DEV,
+    firebaseSecrets: FIREBASE_DEV,
+  };
 };
 export default getConfigVars;

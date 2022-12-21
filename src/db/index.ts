@@ -2,8 +2,9 @@ import mongoose, { Model } from "mongoose";
 import getConfigVars from "../config";
 import models from "../models";
 
+const { mongoURL } = getConfigVars();
 mongoose
-  .connect(getConfigVars()!.mongoURL)
+  .connect(mongoURL)
   .then(async () => {
     // console.log(getConfigVars());
     await Promise.all(
