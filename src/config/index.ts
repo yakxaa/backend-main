@@ -39,7 +39,6 @@ const FIREBASE_PROD = {
 };
 
 const getConfigVars = () => {
-  let mongoURL: typeof MONGO_URL_DEV, firebaseSecrets: typeof FIREBASE_DEV;
   const { ENV } = process.env;
   if (ENV == "production") {
     return {
