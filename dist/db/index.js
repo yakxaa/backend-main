@@ -16,8 +16,10 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const config_1 = __importDefault(require("../config"));
 const models_1 = __importDefault(require("../models"));
 mongoose_1.default
-    .connect((0, config_1.default)(process.env))
+    .connect((0, config_1.default)().mongoURL)
     .then(() => __awaiter(void 0, void 0, void 0, function* () {
+    // console.log(getConfigVars());
+    console.log(models_1.default);
     yield Promise.all(models_1.default.map((model) => __awaiter(void 0, void 0, void 0, function* () {
         yield model.init();
     })));
